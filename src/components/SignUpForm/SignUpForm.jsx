@@ -48,23 +48,22 @@ export default class SignUpForm extends Component{
         <h1>Sign Up</h1>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
         <div className="form-group">
-            <label for="exampleInputEmail1">Name</label>
+            <label htmlFor="exampleInputEmail1">Name</label>
                 <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required className="form-control" id="exampleInputEmail1"/>
         </div>
         <div className="form-group">
-            <label for="exampleInputEmail1">Email</label>
-                <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+            <label htmlFor="exampleInputEmail1">Email</label>
+                <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required className="form-control" id="exampleInputEmail1"/>
         </div>
         <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label htmlFor="exampleInputPassword1">Password</label>
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required className="form-control" id="exampleInputPassword1"/>
         </div>
         <div className="form-group">
-            <label for="exampleInputPassword1">Confirm Password</label>
+            <label htmlFor="exampleInputPassword1">Confirm Password</label>
                 <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required className="form-control" id="exampleInputPassword1"/>
         </div>
-        <button type="submit" className="btn btn-primary" disabled={disable}>SIGN UP</button>
+        <button type="submit" className="btn btn-light" disabled={disable}>SIGN UP</button>
         </form>
 </>
     );

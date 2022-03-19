@@ -45,11 +45,11 @@ export default class SignUpForm extends Component {
       <h1>Sticker</h1>
       <form autoComplete="off" onSubmit={this.handleSubmit}>
       <div className="form-group">
-          <label for="exampleInputEmail1">Email</label>
+          <label htmlFor="exampleInputEmail1">Email</label>
               <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required className="form-control" id="exampleInputEmail1"/>
       </div>
       <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label htmlFor="exampleInputPassword1">Password</label>
               <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required className="form-control" id="exampleInputPassword1"/>
       </div>
       <button type="submit" className="btn btn-primary">LOGIN</button>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 // Add the Route named import
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage'
 import TickerPage from './pages/TickerPage/TickerPage';
 
@@ -30,9 +29,13 @@ class App extends Component {
     return (
       <main className="App">
         { this.state.user ? 
-        
-          <TickerPage />
-          
+        <Switch>
+          <Route path='/tickers' render={(props) => (
+            <TickerPage {...props}/>
+          )}/>
+          {/* and in case nothing matches, we redirect: */}
+          <Redirect to="/tickers" />
+        </Switch>
           :
           <AuthPage setUserInState={this.setUserInState}/>
         }

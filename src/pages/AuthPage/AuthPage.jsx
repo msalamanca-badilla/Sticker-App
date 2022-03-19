@@ -12,7 +12,6 @@ export default class AuthPage extends React.Component {
   render() {
     return (
       <main className="AuthPage">
-
         {this.state.showLogin ? 
         <LoginForm setUserInState={this.props.setUserInState}/> : 
         <SignUpForm setUserInState={this.props.setUserInState} />}
