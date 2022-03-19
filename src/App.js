@@ -1,41 +1,41 @@
+import React, { Component } from 'react';
 import './App.css';
-import Sticker from './components/SignUpForm/SignUpForm.jsx'
+// Add the Route named import
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AuthPage from './pages/AuthPage/AuthPage'
 
-function App() {
-  state={
-    user:null,
+class App extends Component {
+  state = {
+    user: null,
   }
-setUserInState=(incomingUserData)=>{
-  this.setState({user:incomingUserData})
-}
 
-  return (
-    // <div className="App">
-    //   <container>
-    //     <h1>Sticker</h1>
-    //     <Sticker />
-    //     </container>
-    // </div>
+  
+  setUserInState = (incomingUserData) => {
+    this.setState({ user: incomingUserData})
+  }
 
-<main className="App">
-{/* this ternary operator asks: is there a user in state? */}
-{/* if yes, they can see our pages: neworder, etc. */}
-{/* if no(user is null), show them only the <AuthPage> */}
-{ this.state.user ? 
-  <Switch>
-    <Route path='/orders/new' render={(props) => (
-      <NewOrderPage {...props}/>
-    )}/>
-    <Route path='/orders' render={(props) => (
-      <OrderHistoryPage {...props}/>
-    )}/>
-    <Redirect to="/orders" />
-  </Switch>
-  :
-  <AuthPage setUserInState={this.setUserInState}/>
-}
-</main>
-  );
+  
+  componentDidMount() {
+    let token = window.localStorage.getItem('token')
+    if (token) {
+      
+      let userDoc = JSON.parse(atob(token.split('.')[1])).user 
+      this.setState({user: userDoc})      
+    }
+  }
+
+  render() {
+    return (
+      <main className="App">
+        { this.state.user ? 
+          <h1>BYE</h1>
+          :
+          <AuthPage setUserInState={this.setUserInState}/>
+        }
+      </main>
+    );
+  }
 }
 
 export default App;
