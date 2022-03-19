@@ -1,14 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class TickerPage extends React.Component {
 
   render() {
     return (
-      <main classNameName="TickerPage">
+      <main className="TickerPage">
+          <Link to='/'> Logout</Link>
           <h1>Enter Stock Ticker</h1>
             <form>
                 <div className="form-group">
-                    <label for="exampleInputEmail1"></label>
+                    <label htmlFor="exampleInputEmail1"></label>
                     <input type="text" className="form-control" id="exampleInputEmail1"/>
                 </div>
                     <button type="submit" className="btn btn-primary">Search</button>

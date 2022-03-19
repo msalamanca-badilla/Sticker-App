@@ -30,7 +30,7 @@ class App extends Component {
       <main className="App">
         { this.state.user ? 
         <Switch>
-          <Route path='/tickers' render={(props) => (
+          <Route path='/users/login' render={(props) => (
             <TickerPage {...props}/>
           )}/>
           {/* and in case nothing matches, we redirect: */}

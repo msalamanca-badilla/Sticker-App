@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 export default class SignUpForm extends Component{
     state = {
-        name: ' ',
-        email: ' ',
-        password: ' ',
-        confirm: ' ',
-        error:' ',
+        name: '',
+        email: '',
+        password: '',
+        confirm: '',
+        error:'',
     }
 
   handleChange = (evt) => {
