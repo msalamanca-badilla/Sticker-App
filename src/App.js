@@ -36,7 +36,7 @@ class App extends Component {
           :
           <AuthPage setUserInState={this.setUserInState}/>
         }
-        <TickerPage />
+        
       </main>
     );
   }
