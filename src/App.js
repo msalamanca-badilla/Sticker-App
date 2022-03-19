@@ -31,7 +31,7 @@ class App extends Component {
       <main className="App">
         { this.state.user ? 
         
-          <h1>BYE</h1>
+          <TickerPage />
           
           :
           <AuthPage setUserInState={this.setUserInState}/>
