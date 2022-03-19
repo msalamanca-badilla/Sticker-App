@@ -4,6 +4,7 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage'
+import TickerPage from './pages/TickerPage/TickerPage';
 
 class App extends Component {
   state = {
@@ -29,10 +30,13 @@ class App extends Component {
     return (
       <main className="App">
         { this.state.user ? 
+        
           <h1>BYE</h1>
+          
           :
           <AuthPage setUserInState={this.setUserInState}/>
         }
+        <TickerPage />
       </main>
     );
   }

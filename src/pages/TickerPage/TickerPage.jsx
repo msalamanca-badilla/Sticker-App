@@ -1,11 +1,12 @@
 import React from 'react'
 
-function TickerPage(props) {
-      return (
-        <main className="TickerPage">
-            <div>TickerPage</div>
-        </main>
-      );
-    }
+export default class TickerPage extends React.Component {
 
-  export default TickerPage;
+  render() {
+    return (
+      <main className="TickerPage">
+          <h1>TickerPage</h1>
+      </main>
+    );
+  }
+}

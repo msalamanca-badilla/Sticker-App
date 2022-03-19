@@ -1,5 +1,3 @@
-
-  
 import React from 'react'
 import './AuthPage.css';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
