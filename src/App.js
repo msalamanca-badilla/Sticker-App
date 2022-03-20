@@ -28,18 +28,16 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        { this.state.user ? 
-        <Switch>
-          <Route path='/tickers' render={(props) => (
-            <TickerPage {...props}/>
-          )}/>
-          {/* and in case nothing matches, we redirect: */}
-          <Redirect to="/tickers" />
-        </Switch>
-          :
-          <AuthPage setUserInState={this.setUserInState}/>
-        }
-        
+        {this.state.user ? (
+          <Switch>
+              <Route path='/tickers' render={(props) => (
+                <TickerPage {...props}/>
+              )}/>
+            <Redirect to="/tickers" />
+          </Switch>
+        ) : (
+          <AuthPage setUserInState={this.setUserInState} />
+        )}
       </main>
     );
   }
