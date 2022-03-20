@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import UserLogOut from '../../components/UserLogOut/UserLogOut';
 export default class TickerPage extends React.Component {
 
   render() {
     return (
       <main className="TickerPage">
-          <Link to='/'> Logout</Link>
+          <UserLogOut/>
           <h1>Enter Stock Ticker</h1>
             <form>
                 <div className="form-group">
