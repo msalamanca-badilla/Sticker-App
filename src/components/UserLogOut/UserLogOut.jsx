@@ -17,7 +17,7 @@ class UserLogOut extends React.Component{
     render(){
         return(
             <div className="UserLogOut">   
-            <Link onClick={this.logout} exact path='/users/login' className='btn-sm'>Logout </Link>
+            <Link onClick={this.logout} to='/users/login' className='btn-sm'>Logout </Link>
             </div>
         )
     }
