@@ -4,7 +4,7 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage'
 import TickerPage from './pages/TickerPage/TickerPage';
-
+import LoginForm from './components/LoginForm/LoginForm'
 class App extends Component {
   state = {
     user: null,
@@ -25,10 +25,25 @@ class App extends Component {
     }
   }
 
+  logout = () => {
+    let token = localStorage.getItem('token')
+    if (token){
+      token= null
+      window.localStorage.removeItem('token')
+      this.setState({ user: null })
+    }
+  }
   render() {
     return (
       <main className="App">
-        {this.state.user ? (
+        <Route path='/tickers' render={(props) => (
+            <TickerPage {...props}/>
+          )}/>
+        <Route path='/account/login' render={() => (
+            <AuthPage path = '/account/login' setUserInState={this.setUserInState} />
+          )}/>
+
+        {/* {this.state.user ? (
           <Switch>
               <Route path='/tickers' render={(props) => (
                 <TickerPage {...props}/>
@@ -36,8 +51,8 @@ class App extends Component {
             <Redirect to="/tickers" />
           </Switch>
         ) : (
-          <AuthPage setUserInState={this.setUserInState} />
-        )}
+          <AuthPage path = '/account/login' setUserInState={this.setUserInState} />
+        )} */}
       </main>
     );
   }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import LoginForm from '../../components/LoginForm/LoginForm'
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AuthPage from "../../pages/AuthPage/AuthPage";
+import TickerPage from "../../pages/TickerPage/TickerPage";
 class UserLogOut extends React.Component{
     state={
         loggedOut: false
@@ -17,7 +18,11 @@ class UserLogOut extends React.Component{
     render(){
         return(
             <div className="UserLogOut">   
-            <Link onClick={this.logout} to='/users/login' className='btn-sm'>Logout </Link>
+
+            <Link onClick={this.logout} to='/account/login' className='btn-sm'>Logout </Link>
+
+
+
             </div>
         )
     }
