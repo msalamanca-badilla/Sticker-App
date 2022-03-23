@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const orderCtrl = require('../../controllers/tickers');
+const tickerCtrl = require('../../controllers/tickers');
 
-router.get('/tickers', orderCtrl.index)
-
+router.get('/tickers', tickerCtrl.post)
+router.get('/watchlist', tickerCtrl.index )
 module.exports = router;

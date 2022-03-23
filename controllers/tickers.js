@@ -18,9 +18,19 @@ const axios = require('axios');
 
 
 module.exports = {
+    post,
     index,
 }
 
+
+async function post(req, res) {
+  try {      
+    
+    res.status(200).json()         
+  } catch(err) {
+    res.status(400).json(err);
+  }
+}
 
 async function index(req, res) {
   try {      

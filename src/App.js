@@ -4,7 +4,9 @@ import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage'
 import TickerPage from './pages/TickerPage/TickerPage';
-import LoginForm from './components/LoginForm/LoginForm'
+import LoginForm from './components/LoginForm/LoginForm';
+import WatchlistPage from './pages/WatchlistPage/WatchlistPage';
+
 class App extends Component {
   state = {
     user: null,
@@ -39,9 +41,13 @@ class App extends Component {
         <Route path='/tickers' render={(props) => (
             <TickerPage {...props}/>
           )}/>
+        <Route path='/watchlist' render={(props) => (
+            <WatchlistPage {...props}/>
+          )}/>
         <Route path='/account/login' render={() => (
             <AuthPage path = '/account/login' setUserInState={this.setUserInState} />
           )}/>
+
 
         {/* {this.state.user ? (
           <Switch>
