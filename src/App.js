@@ -27,38 +27,24 @@ class App extends Component {
     }
   }
 
-  logout = () => {
-    let token = localStorage.getItem('token')
-    if (token){
-      token= null
-      window.localStorage.removeItem('token')
-      this.setState({ user: null })
-    }
-  }
   render() {
     return (
       <main className="App">
-        <Route path='/tickers' render={(props) => (
-            <TickerPage {...props}/>
-          )}/>
-        <Route path='/watchlist' render={(props) => (
-            <WatchlistPage {...props}/>
-          )}/>
-        <Route path='/account/login' render={() => (
-            <AuthPage path = '/account/login' setUserInState={this.setUserInState} />
-          )}/>
-
-
-        {/* {this.state.user ? (
+        {this.state.user ? (
           <Switch>
-              <Route path='/tickers' render={(props) => (
+            <Route path='/tickers' render={(props) => (
                 <TickerPage {...props}/>
               )}/>
-            <Redirect to="/tickers" />
+            <Route path='/watchlist' render={(props) => (
+                <WatchlistPage {...props}/>
+              )}/>
+            <Route path='/' render={() => (
+                <AuthPage path = '/' setUserInState={this.setUserInState} />
+              )}/>
           </Switch>
         ) : (
-          <AuthPage path = '/account/login' setUserInState={this.setUserInState} />
-        )} */}
+          <AuthPage setUserInState={this.setUserInState} />
+        )}
       </main>
     );
   }
