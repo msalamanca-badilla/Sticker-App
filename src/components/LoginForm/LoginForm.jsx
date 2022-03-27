@@ -16,6 +16,7 @@ export default class SignUpForm extends Component {
 
   handleSubmit = async (evt) => {
     evt.preventDefault();
+    console.log(evt)
     try {
     
       const fetchResponse = await fetch('/api/users/login', {
@@ -31,6 +32,7 @@ export default class SignUpForm extends Component {
       window.localStorage.setItem('token', token);  
 
       const userDoc = JSON.parse(atob(token.split('.')[1])).user; 
+      console.log(userDoc)
       this.props.setUserInState(userDoc)
 
     } catch (err) {
@@ -43,7 +45,7 @@ export default class SignUpForm extends Component {
     return (
       <>
       <h1>Sticker</h1>
-      <form autoComplete="off" onSubmit={this.handleSubmit}>
+      <form autoComplete="off" onSubmit={(e)=>this.handleSubmit(e)}>
       <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email</label>
               <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required className="form-control" />

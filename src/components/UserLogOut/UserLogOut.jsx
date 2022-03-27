@@ -8,7 +8,8 @@ class UserLogOut extends React.Component{
 
     logout=()=>{
         window.localStorage.clear('token');
-        this.setState({loggedOut: true});
+        console.log('loging out')
+        this.props.setUserInState(null)
     };
 
 

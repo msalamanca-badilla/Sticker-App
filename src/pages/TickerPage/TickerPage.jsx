@@ -19,9 +19,10 @@ export default class TickerPage extends React.Component {
 //     }
 
   render() {
+    // console.log(this.props)
     return (
       <main className="TickerPage">
-          <UserLogOut/>
+          <UserLogOut setUserInState = {this.props.setUserInState}/>
           <h1>Enter Stock Ticker</h1>
             <form>
                 <div className="form-group">

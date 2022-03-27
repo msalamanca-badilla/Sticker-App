@@ -32,15 +32,18 @@ class App extends Component {
       <main className="App">
         {this.state.user ? (
           <Switch>
+            <Route exact path='/'>
+              <Redirect to = '/tickers'/>
+            </Route>
             <Route path='/tickers' render={(props) => (
-                <TickerPage {...props}/>
+                <TickerPage {...props} setUserInState={this.setUserInState}/>
               )}/>
             <Route path='/watchlist' render={(props) => (
                 <WatchlistPage {...props}/>
               )}/>
-            <Route path='/' render={() => (
+            {/* <Route path='/' render={() => (
                 <AuthPage path = '/' setUserInState={this.setUserInState} />
-              )}/>
+              )}/> */}
           </Switch>
         ) : (
           <AuthPage setUserInState={this.setUserInState} />
