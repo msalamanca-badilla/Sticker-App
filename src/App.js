@@ -6,6 +6,7 @@ import AuthPage from './pages/AuthPage/AuthPage'
 import TickerPage from './pages/TickerPage/TickerPage';
 import LoginForm from './components/LoginForm/LoginForm';
 import WatchlistPage from './pages/WatchlistPage/WatchlistPage';
+import Nav from './components/Nav/Nav'
 
 class App extends Component {
   state = {
@@ -31,23 +32,24 @@ class App extends Component {
     return (
       <main className="App">
         {this.state.user ? (
-          <Switch>
-            <Route exact path='/'>
-              <Redirect to = '/tickers'/>
-            </Route>
-            <Route path='/tickers' render={(props) => (
-                <TickerPage {...props} setUserInState={this.setUserInState}/>
-              )}/>
-            <Route path='/watchlist' render={(props) => (
-                <WatchlistPage {...props}/>
-              )}/>
-            {/* <Route path='/' render={() => (
-                <AuthPage path = '/' setUserInState={this.setUserInState} />
-              )}/> */}
-          </Switch>
+          <div>
+              <Switch>
+                <Route exact path='/'>
+                  <Redirect to = '/tickers'/>
+                </Route>
+                <Route path='/tickers' render={(props) => (
+                    <TickerPage {...props} setUserInState={this.setUserInState}/>
+                  )}/>
+                <Route path='/watchlist' render={(props) => (
+                    <WatchlistPage {...props}/> 
+                  )}/>
+              </Switch>
+            <Nav />
+          </div>
         ) : (
           <AuthPage setUserInState={this.setUserInState} />
         )}
+
       </main>
     );
   }
