@@ -7,6 +7,7 @@ import TickerPage from './pages/TickerPage/TickerPage';
 import LoginForm from './components/LoginForm/LoginForm';
 import WatchlistPage from './pages/WatchlistPage/WatchlistPage';
 import Nav from './components/Nav/Nav'
+import DetailsPage from './pages/DetailsPage/DetailsPage';
 
 class App extends Component {
   state = {
@@ -34,6 +35,9 @@ class App extends Component {
         {this.state.user ? (
           <div>
               <Switch>
+                <Route path='/tickers/details' render={(props) => (
+                    <DetailsPage {...props}/> 
+                  )}/>
                 <Route exact path='/'>
                   <Redirect to = '/tickers'/>
                 </Route>

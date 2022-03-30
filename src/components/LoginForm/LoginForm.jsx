@@ -43,7 +43,7 @@ export default class SignUpForm extends Component {
 
   render() {
     return (
-      <>
+    <div className = 'LoginForm'>
       <h1>Sticker</h1>
       <form autoComplete="off" onSubmit={(e)=>this.handleSubmit(e)}>
       <div className="form-group">
@@ -56,7 +56,7 @@ export default class SignUpForm extends Component {
       </div>
       <button type="submit" className="btn btn-primary">LOGIN</button>
       </form>
-</>
+    </div>
     );
   }
 }
