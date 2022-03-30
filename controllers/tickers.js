@@ -4,19 +4,22 @@ const axios = require('axios');
 const TIINGO = process.env.TIINGO
 
 
-// var requestOptions = {
-//         'url': 'https://api.tiingo.com/tiingo/daily/AAPL',
-//         'headers': {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Token ${TIINGO}`
-//             }
-//         };
+// const axios = require("axios");
 
-// request(requestOptions,
-//         function(error, response, body) {
-//             console.log(body);
-//         }
-// );        
+// const options = {
+//   method: 'GET',
+//   url: 'https://yahoofinance-stocks1.p.rapidapi.com/exchanges',
+//   headers: {
+//     'X-RapidAPI-Host': 'yahoofinance-stocks1.p.rapidapi.com',
+//     'X-RapidAPI-Key': '202dd0b747msh1ecea7c8c4b9429p14cf0djsn410940c71ee1'
+//   }
+// };
+
+// axios.request(options).then(function (response) {
+// 	console.log(response.data);
+// }).catch(function (error) {
+// 	console.error(error);
+// });    
 
 
 module.exports = {
