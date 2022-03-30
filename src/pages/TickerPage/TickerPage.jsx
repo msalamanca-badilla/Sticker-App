@@ -51,7 +51,7 @@ export default class TickerPage extends React.Component {
                     onChange={this.handleChange} 
                     />
                 </div>
-                    <button type="submit" className="btn btn-primary">Search</button>
+                    <button type="submit" className="btn btn-dark">Search</button>
             </form>
             {this.state.ticker.symbol}
       </main>

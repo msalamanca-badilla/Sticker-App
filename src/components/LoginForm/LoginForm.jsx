@@ -54,7 +54,7 @@ export default class SignUpForm extends Component {
           <label htmlFor="exampleInputPassword1">Password</label>
               <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required className="form-control"/>
       </div>
-      <button type="submit" className="btn btn-primary">LOGIN</button>
+      <button type="submit" className="btn btn-dark">LOGIN</button>
       </form>
     </div>
     );

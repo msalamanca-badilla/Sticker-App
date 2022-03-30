@@ -5,9 +5,9 @@ function Nav(props){
     return(
         <footer>
         <nav >
-            <nav className="navbar navbar-light bg-light">
-                <a className="navbar-brand" href="/watchlist">Watchlist</a>
-                <a className="navbar-brand" href="/tickers">Search Stock Ticker</a>
+            <nav className="navbar text-white bg-dark">
+                <a className="text-white bg-dark" href="/watchlist">Watchlist</a>
+                <a className="text-white bg-dark" href="/tickers">Search Stock Ticker</a>
                 <UserLogOut setUserInState = {props.setUserInState}/>
             </nav>
         </nav>

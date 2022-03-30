@@ -12,13 +12,14 @@ export default class AuthPage extends React.Component {
   render() {
     return (
       <main className="AuthPage">
-          <h3 onClick={() => this.setState({ showLogin: !this.state.showLogin })}>
-            {this.state.showLogin ? 'SIGN UP' : 'LOG IN'}
-          </h3>
         {this.state.showLogin ? 
-        <LoginForm setUserInState={this.props.setUserInState}/> : 
-        <SignUpForm setUserInState={this.props.setUserInState} />}
+          <LoginForm setUserInState={this.props.setUserInState}/> : 
+          <SignUpForm setUserInState={this.props.setUserInState} />}
+        <p onClick={() => this.setState({ showLogin: !this.state.showLogin })}>
+          {this.state.showLogin ? 'Don"t have an account yet? Sign up!' : `Already have an account? Login`}
+        </p>
       </main>
+      
     );
   }
 }
