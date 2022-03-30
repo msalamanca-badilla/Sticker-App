@@ -53,6 +53,7 @@ export default class TickerPage extends React.Component {
                 </div>
                     <button type="submit" className="btn btn-dark">Search</button>
             </form>
+            
             {this.state.ticker.symbol}
       </main>
     );

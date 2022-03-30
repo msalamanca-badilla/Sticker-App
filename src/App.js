@@ -36,7 +36,7 @@ class App extends Component {
           <div>
               <Switch>
                 <Route path='/tickers/details' render={(props) => (
-                    <DetailsPage {...props}/> 
+                    <DetailsPage {...props} /> 
                   )}/>
                 <Route exact path='/'>
                   <Redirect to = '/tickers'/>
@@ -45,7 +45,7 @@ class App extends Component {
                     <TickerPage {...props} setUserInState={this.setUserInState}/>
                   )}/>
                 <Route path='/watchlist' render={(props) => (
-                    <WatchlistPage {...props}/> 
+                    <WatchlistPage {...props} user={this.state.user}/> 
                   )}/>
               </Switch>
             <Nav setUserInState={this.setUserInState}/>
