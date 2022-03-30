@@ -68,9 +68,13 @@ export default class TickerPage extends React.Component {
             </form>
             <hr/>
             <div className='stockData'>
-              <h2>{this.state.tickerData.displayName} ({this.state.tickerData.symbol})</h2>
-              <p>Market Day High: ${this.state.tickerData.regularMarketDayHigh}</p>
-              <p>Market Day Low: ${this.state.tickerData.regularMarketDayLow}</p>
+        
+                  <div>
+                    <h2>{this.state.tickerData.displayName} ({this.state.tickerData.symbol})</h2>
+                    <p>Market Day High: ${this.state.tickerData.regularMarketDayHigh}</p>
+                    <p>Market Day Low: ${this.state.tickerData.regularMarketDayLow}</p>
+                  </div>
+             
             </div>
             <form onSubmit={(evt)=>this.handleWatchlistSubmit(evt)}>
               <button type="submit" className="btn btn-dark">Add to Watchlist</button>
