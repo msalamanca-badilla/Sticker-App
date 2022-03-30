@@ -4,19 +4,19 @@ const axios = require('axios');
 const TIINGO = process.env.TIINGO
 
 
-// var requestOptions = {
-//         'url': 'https://api.tiingo.com/tiingo/daily/AAPL',
-//         'headers': {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Token ${TIINGO}`
-//             }
-//         };
+var requestOptions = {
+        'url': 'https://api.tiingo.com/api/test?token=9cc1c059bee7ea41a3ce614958f8c9a9ed9a8133',
+        'headers': {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${TIINGO}`
+            }
+        };
 
-// request(requestOptions,
-//         function(error, response, body) {
-//             console.log(body);
-//         }
-// );        
+request(requestOptions,
+        function(error, response, body) {
+            console.log(body);
+        }
+);        
 
 
 module.exports = {
@@ -32,6 +32,7 @@ async function getTicker(req, res) {
   let requestOptions = {
         method: 'GET',
         url: 'https://api.tiingo.com/tiingo/daily/AAPL',
+        parama:{query: req.body},
         headers: {
             Authorization: `Token ${TIINGO}`
             }
