@@ -44,7 +44,7 @@ class App extends Component {
                     <WatchlistPage {...props}/> 
                   )}/>
               </Switch>
-            <Nav />
+            <Nav setUserInState={this.setUserInState}/>
           </div>
         ) : (
           <AuthPage setUserInState={this.setUserInState} />
