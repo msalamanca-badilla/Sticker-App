@@ -6,23 +6,9 @@ import axios from 'axios';
 export default class TickerPage extends React.Component {
 
   state={
-    ticker: ''
+    ticker: '',
+    tickerData:{ },
   }
-
-  // async componentDidMount(){
-  //   const options = {
-  //     method: 'GET',
-  //     url: `https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=AAPL`,
-  //     params: {modules: 'defaultKeyStatistics,assetProfile'},
-  //     headers: {
-  //       'X-API-KEY': 'P0CPGkiczQ2tknb0qVTO52Ij1nkRs6Uu7H8DUhLc'
-  //     }
-  //   };
-  //   const response = await axios.request(options)
-  //   const data = await response.data.quoteResponse.result[0]
-  //   this.setState({ticker: data})
-  // }
-
   
   handleChange = (evt) => {
     this.setState({
@@ -30,9 +16,19 @@ export default class TickerPage extends React.Component {
     });
   };
 
-  handleSubmit = (evt) => {
+  handleSubmit = async (evt) => {
     evt.preventDefault(); 
     const ticker = this.state.ticker
+      const options = {
+      method: 'GET',
+      url: `https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=${ticker}`,
+      headers: {
+        'X-API-KEY': 'FSqieJ5I5l4wT5ManO1ZB2o1OglcUzhb7IKTxpGx'
+      }
+    };
+    const response = await axios.request(options)
+    const data = response.data.quoteResponse.result[0]
+    this.setState({tickerData: data})
   };
 
   
@@ -48,13 +44,13 @@ export default class TickerPage extends React.Component {
                     type="text" 
                     className="form-control" 
                     value={this.state.ticker} 
-                    onChange={this.handleChange} 
+                    onChange={(evt)=>this.handleChange(evt)} 
                     />
                 </div>
                     <button type="submit" className="btn btn-dark">Search</button>
             </form>
-            
-            {this.state.ticker.symbol}
+            {this.state.tickerData.symbol}
+            {this.state.tickerData.averageAnalystRating}
       </main>
     );
   }
