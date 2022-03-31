@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import'./LoginForm.css'
 
 export default class SignUpForm extends Component {
   state = {
@@ -44,7 +45,7 @@ export default class SignUpForm extends Component {
   render() {
     return (
     <div className = 'LoginForm'>
-      <h1>Sticker</h1>
+      <h1 className = 'titleFont'>Sticker</h1>
       <form autoComplete="off" onSubmit={(e)=>this.handleSubmit(e)}>
       <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email</label>

@@ -25,7 +25,7 @@ export default class TickerPage extends React.Component {
   //API HANDLESUBMIT
   handleSubmit = async (evt) => {
     evt.preventDefault(); 
-    const ticker = this.state.ticker//input for 'Enter Stock Ticker'
+      const ticker = this.state.ticker//input for 'Enter Stock Ticker'
       const options = {
       method: 'GET',
       url: `https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=${ticker}`,

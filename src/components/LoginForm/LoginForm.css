@@ -1,4 +1,10 @@
 .LoginForm{
-    display: flex;
-    margin: 40px;
+    padding: 20px;
 }
+
+.titleFont{
+    font-family: 'Shrikhand', cursive;
+    font-size: 50px;
+}
+
+
