@@ -24,12 +24,12 @@ export default class WatchlistPage extends React.Component{
       handleRemoveFromWatchlist= async (evt) =>{
         evt.preventDefault()
         try{
-            const removeTicker = await fetch(`/api/tickers/watchlist/delete/${evt.target.id}`, {
+            const id = evt.target.id
+            const removeTicker = await fetch(`/api/tickers/watchlist/delete/${id}`, {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
             })   
             let serverResponse = await removeTicker.json()
-            console.log({serverResponse})
             console.log("Delete Successful:", serverResponse)  
         }
         catch(err) {

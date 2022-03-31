@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './TickerPage.css'
+import { Link } from 'react-router-dom';
 
 export default class TickerPage extends React.Component {
 
@@ -68,6 +69,7 @@ export default class TickerPage extends React.Component {
         regularMarketDayHigh:0,
         regularMarketDayLow:0
         })
+        this.props.history.push('/watchlist');
     } catch (err) {
       console.log("error")
       this.setState({ error:  'Try Again' });
@@ -102,14 +104,13 @@ export default class TickerPage extends React.Component {
                   <p>Market Day Low: ${this.state.regularMarketDayLow}</p>
                 </div>
               </div>
-              <form onSubmit={(evt) => this.handleWatchlistSubmit(evt)}>
-                <button type="submit" className="btn btn-dark">Add to Watchlist</button>
+              <form onSubmit={(evt) => this.handleWatchlistSubmit(evt)} >
+                  <button type="submit" className="btn btn-dark">Add to Watchlist</button>                
               </form>
             </>
       ):(
         <div></div>
       )}
-
       </main>
     );
   }
