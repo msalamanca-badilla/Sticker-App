@@ -24,18 +24,27 @@ async function getTicker(req,res){
 }  
 
 async function index(req, res) {
-  try {      
-    let watchlist = await TickerModel.find().populate('user').exec()
+  try {
+    // 1. grab all items from DB, sorted by date descending
+    let watchlist = await TickerModel.find({user: req.user._id}).sort({createdAt:'desc'}).exec();
+    console.log(watchlist)
+    // 2. send to frontend
     res.status(200).json(watchlist)         
   } catch(err) {
     res.status(400).json(err);
   }
 }
 
+
 async function addToWatchlist(req, res) {
   try {
       let createWatchlist = await TickerModel.create({
-        tickerSymbol: req.body.tickerSymbol, user:req.user._id,
+        user:req.user._id,
+        tickerSymbol: req.body.tickerSymbol, 
+        displayName: req.body.displayName,
+        regularMarketDayHigh: req.body.regularMarketDayHigh,
+        regularMarketDayLow: req.body.regularMarketDayLow
+
       })
       res.status(200).json(createWatchlist);
   } catch(err) {

@@ -1,7 +1,8 @@
 import React from "react";
 import { Route } from "react-router";
+import TickerPage from "../TickerPage/TickerPage";
 
-export default class IndexPage extends React.Component{
+export default class WatchlistPage extends React.Component{
     state={
         watchlistItems: []
     }
@@ -9,9 +10,13 @@ export default class IndexPage extends React.Component{
     async componentDidMount() {
         try {
           let jwt = localStorage.getItem('token')
-          let fetchWatchlistReponse = await fetch('/api/tickers', { headers: { 'Authorization': 'Bearer ' + jwt }}) 
+          let fetchWatchlistReponse = await fetch('/api/tickers/watchlist', { 
+              headers: { 'Authorization': 'Bearer ' + jwt }
+            }) 
+        //   console.log({fetchWatchlistReponse})
           let watchlist = await fetchWatchlistReponse.json();
-          this.setState({watchlistItems:watchlist})
+        //   console.log({watchlist})
+          this.setState({watchlistItems: watchlist})
 
         } catch (err) {
           console.error('ERROR:', err) 
@@ -19,12 +24,28 @@ export default class IndexPage extends React.Component{
       }
 
     render(){
+        console.log(this.state.watchlistItems)
         return(
             <main className='WatchlistPage'>
                 <h1> {this.props.user.name}'s Watchlist</h1>
                 <div>Data as of</div>
-                <p>watchlistItems={this.state.watchlistItems}</p>
-                {/* <a className="navbar-brand" href="/tickers/details">Details Page</a> */}
+                {
+                    this.state.watchlistItems.length > 0 && 
+                    <div>
+                        {
+                            this.state.watchlistItems.map((watchlistItem,i) => {
+                                return( 
+                                    <p key={'watchlistItem' + i}>
+                                        {watchlistItem.tickerSymbol}
+                                        {watchlistItem.displayName}
+                                        {watchlistItem.regularMarketDayHigh}
+                                        {watchlistItem.regularMarketDayLow}
+                                    </p>
+                                )
+                            })
+                        }
+                    </div> 
+                }
             </main>
         )
     }

@@ -52,13 +52,24 @@ export default class TickerPage extends React.Component {
       const fetchResponse = await fetch('/api/tickers/watchlistCreate', {
         method: 'POST',
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + jwt},
-        body: JSON.stringify({tickerSymbol: this.state.tickerSymbol })//send object to server
+        body: JSON.stringify({
+          tickerSymbol: this.state.tickerSymbol,
+          displayName: this.state.displayName,
+          regularMarketDayHigh: this.state.regularMarketDayHigh,
+          regularMarketDayLow: this.state.regularMarketDayLow
+        })//send object to server
       })
 
       let serverResponse = await fetchResponse.json()
       console.log('Success: ', serverResponse)
 
-      this.setState({tickerSymbol:'', ticker:''})
+      this.setState({
+        ticker: '',
+        displayName:'',
+        tickerSymbol:'',
+        regularMarketDayHigh:0,
+        regularMarketDayLow:0
+        })
 
     } catch (err) {
       console.log("error")
