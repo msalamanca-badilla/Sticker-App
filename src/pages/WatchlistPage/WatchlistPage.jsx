@@ -23,16 +23,13 @@ export default class WatchlistPage extends React.Component{
 
       handleRemoveFromWatchlist= async (evt) =>{
         evt.preventDefault()
-        
         try{
-            const id =evt.currentTarget.id
-            console.log({id})
-            const removeTicker = await fetch(`/api/watchlist/delete/${evt.target.id}`, {
+            const removeTicker = await fetch(`/api/tickers/watchlist/delete/${evt.target.id}`, {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
             })   
             let serverResponse = await removeTicker.json()
-            console.log(serverResponse)
+            console.log({serverResponse})
             console.log("Delete Successful:", serverResponse)  
         }
         catch(err) {
@@ -55,25 +52,26 @@ export default class WatchlistPage extends React.Component{
                                     <table key={'watchlistItem' + i}>   
                                        <h4 className = 'tickerWatchlist'>{watchlistItem.displayName}({watchlistItem.tickerSymbol})</h4>
                                         <tr>
-                                            <th>Market Day <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" className="bi bi-arrow-up-short" viewBox="0 0 16 16">
-                                            <path fillRule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
-                                            </svg></th>
-                                            <th>Market Day <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" className="bi bi-arrow-down-short" viewBox="0 0 16 16">
-                                            <path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
-                                            </svg></th>
-                                            <td></td>   
+                                            <th>Market Day 
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" className="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                                                <path fillRule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                                                </svg></th>
+                                                <th>Market Day <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" className="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                                                <path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                                                </svg>
+                                            </th>
+                                            <th></th>   
                                         </tr>
                                         <tr>
                                             <td>{watchlistItem.regularMarketDayHigh}</td>
                                             <td>{watchlistItem.regularMarketDayLow}</td>   
                                             <td>            
-                                                <form onSubmit={(evt)=>this.handleRemoveFromWatchlist(evt)}>
+                                                <form id={watchlistItem._id} onSubmit={(evt)=>this.handleRemoveFromWatchlist(evt)}>
                                                     <button type="submit" className="btn btn-dark">X</button>
                                                 </form>
                                             </td>    
                                         </tr>
                                         <hr/> 
-                                        
                                     </table>
                                     
                                 )

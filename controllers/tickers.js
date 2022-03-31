@@ -1,22 +1,11 @@
 const TickerModel = require('../models/ticker.js'); 
 
 module.exports = {
-    getTicker,
+    
     index,
     addToWatchlist,
     removeFromWatchlist,
 }
-
-async function getTicker(req,res){
-  const options = {
-    method: 'GET',
-    url: 'https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=AAPL',
-    params: {modules: 'defaultKeyStatistics,assetProfile'},
-    headers: {
-      'X-API-KEY': 'P0CPGkiczQ2tknb0qVTO52Ij1nkRs6Uu7H8DUhLc'
-    }
-  };
-}  
 
 async function index(req, res) {
   try {
@@ -50,10 +39,11 @@ async function addToWatchlist(req, res) {
 async function removeFromWatchlist(req,res){
   try{
     let deleteTicker = await TickerModel.findByIdAndDelete(req.params.id)
-    console.log(deleteTicker)
+    console.log({deleteTicker})
     res.status(200).json(deleteTicker)        
   }
   catch(err){
     res.status(400).json(err)
   }
 }
+

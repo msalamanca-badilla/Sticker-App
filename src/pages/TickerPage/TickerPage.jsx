@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import UserLogOut from '../../components/UserLogOut/UserLogOut';
 import axios from 'axios';
 import './TickerPage.css'
 
@@ -44,7 +42,7 @@ export default class TickerPage extends React.Component {
     })
   };
 
-  //WATCHLIST HANDLE SUBMIT
+  //ADD TO WATCHLIST HANDLE SUBMIT
   handleWatchlistSubmit = async (evt) => {
     evt.preventDefault();
     try {
@@ -57,7 +55,7 @@ export default class TickerPage extends React.Component {
           displayName: this.state.displayName,
           regularMarketDayHigh: this.state.regularMarketDayHigh,
           regularMarketDayLow: this.state.regularMarketDayLow
-        })//send object to server
+        })
       })
 
       let serverResponse = await fetchResponse.json()
@@ -70,7 +68,6 @@ export default class TickerPage extends React.Component {
         regularMarketDayHigh:0,
         regularMarketDayLow:0
         })
-
     } catch (err) {
       console.log("error")
       this.setState({ error:  'Try Again' });
@@ -85,28 +82,34 @@ export default class TickerPage extends React.Component {
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1"></label>
                     <input 
-                    placeholder='i.e. AAPL'
-                    type="text" 
-                    className="form-control" 
-                    value={this.state.ticker} 
-                    onChange={(evt)=>this.handleChange(evt)} 
+                      placeholder='i.e. AAPL'
+                      type="text" 
+                      className="form-control" 
+                      value={this.state.ticker} 
+                      onChange={(evt)=>this.handleChange(evt)} 
                     />
                 </div>
                     <button type="submit" className="btn btn-dark">Search</button>
             </form>
             <br/>
             <hr/>
-            <div className='stockData'>
+      {this.state.tickerSymbol? (
+            <>
+              <div className='stockData'>
+                <div>
+                  <h2>{this.state.displayName} ({this.state.tickerSymbol})</h2>
+                  <p>Market Day High: ${this.state.regularMarketDayHigh}</p>
+                  <p>Market Day Low: ${this.state.regularMarketDayLow}</p>
+                </div>
+              </div>
+              <form onSubmit={(evt) => this.handleWatchlistSubmit(evt)}>
+                <button type="submit" className="btn btn-dark">Add to Watchlist</button>
+              </form>
+            </>
+      ):(
+        <div></div>
+      )}
 
-                  <div>
-                    <h2>{this.state.displayName} ({this.state.tickerSymbol})</h2>
-                    <p>Market Day High: ${this.state.regularMarketDayHigh}</p>
-                    <p>Market Day Low: ${this.state.regularMarketDayLow}</p>
-                  </div>
-            </div>
-            <form onSubmit={(evt)=>this.handleWatchlistSubmit(evt)}>
-              <button type="submit" className="btn btn-dark">Add to Watchlist</button>
-            </form>
       </main>
     );
   }
