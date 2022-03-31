@@ -8,11 +8,10 @@ export default class TickerPage extends React.Component {
 
   state={
     ticker: '',
-    tickerData:{ },
+    displayName:'',
     tickerSymbol:'',
-    marketDayHigh:'',
-    marketDayLow:'',
-    hello:'hi'
+    regularMarketDayHigh:0,
+    regularMarketDayLow:0
   }
   
   //API HANDLE CHANGE
@@ -36,9 +35,12 @@ export default class TickerPage extends React.Component {
     };
     const response = await axios.request(options)
     const data = response.data.quoteResponse.result[0]
-    // this.setState({tickerData: data})//where the result is stored from input
     this.setState({
-      tickerSymbol: data.symbol
+      displayName: data.displayName,
+      tickerSymbol: data.symbol,
+      regularMarketDayHigh: data.regularMarketDayHigh,
+      regularMarketDayLow: data.regularMarketDayLow
+
     })
   };
 
@@ -86,9 +88,9 @@ export default class TickerPage extends React.Component {
             <div className='stockData'>
 
                   <div>
-                    <h2>{this.state.tickerData.displayName} ({this.state.tickerSymbol})</h2>
-                    <p>Market Day High: ${this.state.tickerData.regularMarketDayHigh}</p>
-                    <p>Market Day Low: ${this.state.tickerData.regularMarketDayLow}</p>
+                    <h2>{this.state.displayName} ({this.state.tickerSymbol})</h2>
+                    <p>Market Day High: ${this.state.regularMarketDayHigh}</p>
+                    <p>Market Day Low: ${this.state.regularMarketDayLow}</p>
                   </div>
             </div>
             <form onSubmit={(evt)=>this.handleWatchlistSubmit(evt)}>
