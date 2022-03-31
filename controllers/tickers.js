@@ -26,8 +26,7 @@ async function getTicker(req,res){
 async function index(req, res) {
   try {      
     let watchlist = await TickerModel.find().populate('user').exec()
-    res.status(200).json(watchlist)  
-    res.status(200).json()         
+    res.status(200).json(watchlist)         
   } catch(err) {
     res.status(400).json(err);
   }
@@ -35,9 +34,11 @@ async function index(req, res) {
 
 async function addToWatchlist(req, res) {
   try {
-      let createHello = await TickerModel.create({tickerData: req.body.tickerData})
-      console.log(req.body)
-      res.status(200).json(createHello);
+
+      let createWatchlist = await TickerModel.create({
+        tickerData: req.body.tickerData, user:req.user._id,
+      })
+      res.status(200).json(createWatchlist);
   } catch(err) {
       console.log('error')
       res.status(400).json(err)

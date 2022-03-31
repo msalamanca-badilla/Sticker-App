@@ -42,16 +42,17 @@ export default class TickerPage extends React.Component {
   handleWatchlistSubmit = async (evt) => {
     evt.preventDefault();
     try {
+      let jwt = localStorage.getItem('token')
       const fetchResponse = await fetch('/api/tickers/watchlistCreate', {
         method: 'POST',
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + jwt},
         body: JSON.stringify({tickerData: this.state.tickerData })//send object to server
       })
 
       let serverResponse = await fetchResponse.json()
       console.log('Success: ', serverResponse)
 
-      this.setState({tickerData:{}})
+      this.setState({tickerData:{}, ticker:''})
 
     } catch (err) {
       console.log("error")
@@ -79,6 +80,7 @@ export default class TickerPage extends React.Component {
             <br/>
             <hr/>
             <div className='stockData'>
+
                   <div>
                     <h2>{this.state.tickerData.displayName} ({this.state.tickerData.symbol})</h2>
                     <p>Market Day High: ${this.state.tickerData.regularMarketDayHigh}</p>
