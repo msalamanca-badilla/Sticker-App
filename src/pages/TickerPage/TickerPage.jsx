@@ -9,15 +9,20 @@ export default class TickerPage extends React.Component {
   state={
     ticker: '',
     tickerData:{ },
-    watchlistData: { },
+    marketDayHigh:'',
+    marketDayLow:'',
+    hello:'hi'
   }
   
+  //API HANDLE CHANGE
   handleChange = (evt) => {
     this.setState({
       ticker: evt.target.value,
+      err:''
     });
   };
 
+  //API HANDLESUBMIT
   handleSubmit = async (evt) => {
     evt.preventDefault(); 
     const ticker = this.state.ticker//input for 'Enter Stock Ticker'
@@ -33,21 +38,26 @@ export default class TickerPage extends React.Component {
     this.setState({tickerData: data})//where the result is stored from input
   };
 
+  //WATCHLIST HANDLE SUBMIT
   handleWatchlistSubmit = async (evt) => {
-    evt.preventDefault(); 
-    const ticker = this.state.ticker
-      const options = {
-      method: 'POST',
-      url: `https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=${ticker}`,
-      headers: {
-        'X-API-KEY': '02KaHo3SM77gxqvnJQC7w8cSAj2iTUQO6CXKntuT'
-      }
-    };
-    const response = await axios.request(options)
-    const data = response.data.quoteResponse.result[0]
-    this.setState({WatchlistData: data})
-  };
-  
+    evt.preventDefault();
+    try {
+      const fetchResponse = await fetch('/api/tickers/watchlistCreate', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({tickerData: this.state.tickerData })//send object to server
+      })
+
+      let serverResponse = await fetchResponse.json()
+      console.log('Success: ', serverResponse)
+
+      this.setState({tickerData:{}})
+
+    } catch (err) {
+      console.log("error")
+      this.setState({ error:  'Try Again' });
+    }
+  }
 
   render() {
     return (
@@ -66,15 +76,14 @@ export default class TickerPage extends React.Component {
                 </div>
                     <button type="submit" className="btn btn-dark">Search</button>
             </form>
+            <br/>
             <hr/>
             <div className='stockData'>
-        
                   <div>
                     <h2>{this.state.tickerData.displayName} ({this.state.tickerData.symbol})</h2>
                     <p>Market Day High: ${this.state.tickerData.regularMarketDayHigh}</p>
                     <p>Market Day Low: ${this.state.tickerData.regularMarketDayLow}</p>
                   </div>
-             
             </div>
             <form onSubmit={(evt)=>this.handleWatchlistSubmit(evt)}>
               <button type="submit" className="btn btn-dark">Add to Watchlist</button>

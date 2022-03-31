@@ -1,4 +1,4 @@
-const OrderModel = require('../models/ticker.js'); 
+const TickerModel = require('../models/ticker.js'); 
 var request = require('request');
 const axios = require('axios');
 const TIINGO = process.env.TIINGO
@@ -25,17 +25,21 @@ async function getTicker(req,res){
 
 async function index(req, res) {
   try {      
-    
+    let watchlist = await TickerModel.find().populate('user').exec()
+    res.status(200).json(watchlist)  
     res.status(200).json()         
   } catch(err) {
     res.status(400).json(err);
   }
 }
 
-async function addToWatchlist(req,res){
-  try {      
-    res.status(200).json()         
+async function addToWatchlist(req, res) {
+  try {
+      let createHello = await TickerModel.create({tickerData: req.body.tickerData})
+      console.log(req.body)
+      res.status(200).json(createHello);
   } catch(err) {
-    res.status(400).json(err);
+      console.log('error')
+      res.status(400).json(err)
   }
 }

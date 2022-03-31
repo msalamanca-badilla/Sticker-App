@@ -1,5 +1,10 @@
 # Sticker Application
+Sticker aka 'Stock Ticker' is a mobile application that allows the user to search for stocks and add them to their watchlist
 
 ## Technology
-- MERN Stack
+- MongoDB
+- React
+- Node.js
+- Yahoo Finance API
+
 ## Icebox

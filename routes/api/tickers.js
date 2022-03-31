@@ -4,6 +4,6 @@ const tickerCtrl = require('../../controllers/tickers');
 
 router.get('/tickers', tickerCtrl.getTicker)
 router.get('/watchlist', tickerCtrl.index )
-router.post('/watchlist',tickerCtrl.addToWatchlist)
+router.post('/watchlistCreate',tickerCtrl.addToWatchlist)
 
 module.exports = router;
