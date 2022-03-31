@@ -34,9 +34,8 @@ async function index(req, res) {
 
 async function addToWatchlist(req, res) {
   try {
-
       let createWatchlist = await TickerModel.create({
-        tickerData: req.body.tickerData, user:req.user._id,
+        tickerSymbol: req.body.tickerSymbol, user:req.user._id,
       })
       res.status(200).json(createWatchlist);
   } catch(err) {

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const tickerSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    tickerData:{String}
+    tickerSymbol: String
   }, {
     timestamps: true,
 });

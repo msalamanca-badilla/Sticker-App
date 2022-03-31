@@ -9,6 +9,7 @@ export default class TickerPage extends React.Component {
   state={
     ticker: '',
     tickerData:{ },
+    tickerSymbol:'',
     marketDayHigh:'',
     marketDayLow:'',
     hello:'hi'
@@ -35,7 +36,10 @@ export default class TickerPage extends React.Component {
     };
     const response = await axios.request(options)
     const data = response.data.quoteResponse.result[0]
-    this.setState({tickerData: data})//where the result is stored from input
+    // this.setState({tickerData: data})//where the result is stored from input
+    this.setState({
+      tickerSymbol: data.symbol
+    })
   };
 
   //WATCHLIST HANDLE SUBMIT
@@ -46,13 +50,13 @@ export default class TickerPage extends React.Component {
       const fetchResponse = await fetch('/api/tickers/watchlistCreate', {
         method: 'POST',
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + jwt},
-        body: JSON.stringify({tickerData: this.state.tickerData })//send object to server
+        body: JSON.stringify({tickerSymbol: this.state.tickerSymbol })//send object to server
       })
 
       let serverResponse = await fetchResponse.json()
       console.log('Success: ', serverResponse)
 
-      this.setState({tickerData:{}, ticker:''})
+      this.setState({tickerSymbol:'', ticker:''})
 
     } catch (err) {
       console.log("error")
@@ -82,7 +86,7 @@ export default class TickerPage extends React.Component {
             <div className='stockData'>
 
                   <div>
-                    <h2>{this.state.tickerData.displayName} ({this.state.tickerData.symbol})</h2>
+                    <h2>{this.state.tickerData.displayName} ({this.state.tickerSymbol})</h2>
                     <p>Market Day High: ${this.state.tickerData.regularMarketDayHigh}</p>
                     <p>Market Day Low: ${this.state.tickerData.regularMarketDayLow}</p>
                   </div>
