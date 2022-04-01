@@ -1,6 +1,4 @@
 import React from "react";
-import { Route } from "react-router";
-import TickerPage from "../TickerPage/TickerPage";
 import './WatchlistPage.css'
 export default class WatchlistPage extends React.Component{
     state={
@@ -41,20 +39,18 @@ export default class WatchlistPage extends React.Component{
         return(
             <main className='WatchlistPage'>
                 <h1 className = 'titleFont'> {this.props.user.name}'s Watchlist</h1>
-                <hr/>
-                
+                <hr/>                
                 {
                     this.state.watchlistItems.length > 0 && 
-                    
                     <div>
                         {
                             this.state.watchlistItems.map((watchlistItem,i) => {
                                 return(  
-                                    <div>
-                                        <h4 className = 'tickerWatchlist'>{watchlistItem.displayName}({watchlistItem.tickerSymbol})</h4>                                                                   
-                                        <table key={'watchlistItem' + i}>                                          
+                                    <div key={'watchlistItem' + i}>
+                                        <h4 className = 'tickerWatchlist'>{watchlistItem.displayName}({watchlistItem.tickerSymbol})</h4>                                                  
+                                        <table>                                          
                                         <thead>
-                                                <tr>                                                
+                                                <tr>                                       
                                                     <th>Market Day
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" className="bi bi-arrow-up-short" viewBox="0 0 16 16">
                                                         <path fillRule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
@@ -65,19 +61,18 @@ export default class WatchlistPage extends React.Component{
                                                     </th>
                                                     <th>
                                                         <form id={watchlistItem._id} onSubmit={(evt)=>this.handleRemoveFromWatchlist(evt)}>
-                                                            <button type="submit" className="btn btn-dark">X</button>
+                                                            <button type="submit" className="btn btn-dark">-</button>
                                                         </form>
                                                     </th>   
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>                                            
+                                                <tr>                                       
                                                     <td>${watchlistItem.regularMarketDayHigh}</td>
                                                     <td>${watchlistItem.regularMarketDayLow}</td>   
-                                                    <td></td>                                            
+                                                    <td></td>                                      
                                                 </tr>
                                             </tbody>
-                                             
                                         </table>
                                         <hr/>
                                     </div> 
@@ -85,9 +80,7 @@ export default class WatchlistPage extends React.Component{
                             })
                         }                        
                     </div> 
-                    
                 }
-                
             </main>
         )
     }

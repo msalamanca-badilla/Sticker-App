@@ -16,3 +16,7 @@
 .logoutButton{
     display: inline;
 }
+
+.watchlistIcon:hover{
+   color:red;
+}

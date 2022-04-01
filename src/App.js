@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-// Add the Route named import
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage'
 import TickerPage from './pages/TickerPage/TickerPage';
-import LoginForm from './components/LoginForm/LoginForm';
 import WatchlistPage from './pages/WatchlistPage/WatchlistPage';
 import Nav from './components/Nav/Nav'
 import DetailsPage from './pages/DetailsPage/DetailsPage';
@@ -28,6 +26,7 @@ class App extends Component {
       this.setState({user: userDoc})      
     }
   }
+  
 
   render() {
     return (

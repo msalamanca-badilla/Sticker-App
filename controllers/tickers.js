@@ -1,10 +1,10 @@
 const TickerModel = require('../models/ticker.js'); 
 
 module.exports = {
-    
     index,
     addToWatchlist,
     removeFromWatchlist,
+    watchlistDetail
 }
 
 async function index(req, res) {
@@ -17,7 +17,6 @@ async function index(req, res) {
     res.status(400).json(err);
   }
 }
-
 
 async function addToWatchlist(req, res) {
   try {
@@ -47,3 +46,11 @@ async function removeFromWatchlist(req,res){
   }
 }
 
+async function watchlistDetail(req,res){
+  try{
+    let detailWatchlist = await TickerModel.find({user:req.user._id,})
+    res.status(200).json(detailWatchlist)
+  }catch(err){
+    res.status(400).json(err)
+  }
+}

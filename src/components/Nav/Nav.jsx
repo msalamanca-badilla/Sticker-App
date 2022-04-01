@@ -6,8 +6,7 @@ import './Nav.css'
 function Nav(props){
     return(
         <footer className = 'Nav'>
-            <nav className="navbar text-white bg-dark">
-                
+            <nav className="navbar text-white bg-dark">                
                 <Link to='/watchlist'>
                     <div className='watchlistNav'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" className="bi bi-eye-fill" viewBox="0 0 16 16">
