@@ -1,6 +1,7 @@
 import React from "react";
 import './WatchlistPage.css'
 export default class WatchlistPage extends React.Component{
+
     state={
         watchlistItems: []
     }
@@ -28,7 +29,8 @@ export default class WatchlistPage extends React.Component{
                 headers: {"Content-Type": "application/json"},
             })   
             let serverResponse = await removeTicker.json()
-            console.log("Delete Successful:", serverResponse)  
+            console.log("Delete Successful:", serverResponse)
+            window.location.reload()  
         }
         catch(err) {
             console.log("error")

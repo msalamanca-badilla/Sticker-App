@@ -28,7 +28,7 @@ export default class TickerPage extends React.Component {
       method: 'GET',
       url: `https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=${ticker}`,
       headers: {
-        'X-API-KEY': '02KaHo3SM77gxqvnJQC7w8cSAj2iTUQO6CXKntuT'
+        'X-API-KEY':'02KaHo3SM77gxqvnJQC7w8cSAj2iTUQO6CXKntuT'
       }
     };
     const response = await axios.request(options)
