@@ -16,7 +16,7 @@ export default class AuthPage extends React.Component {
           <LoginForm setUserInState={this.props.setUserInState}/> : 
           <SignUpForm setUserInState={this.props.setUserInState} />}
         <p onClick={() => this.setState({ showLogin: !this.state.showLogin })}>
-          {this.state.showLogin ? 'Don"t have an account yet? Sign up!' : `Already have an account? Login`}
+          {this.state.showLogin ? "Don't have an account yet? Sign up!" : `Already have an account? Login`}
         </p>
       </main>
       

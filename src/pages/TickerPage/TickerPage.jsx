@@ -79,7 +79,7 @@ export default class TickerPage extends React.Component {
   render() {
     return (
       <main className="TickerPage">
-          <h1>Enter Stock Ticker</h1>
+          <h3 className = 'titleFont'>Enter Stock Ticker</h3>
             <form onSubmit={(evt)=>this.handleSubmit(evt)}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1"></label>
@@ -100,8 +100,14 @@ export default class TickerPage extends React.Component {
               <div className='stockData'>
                 <div>
                   <h2>{this.state.displayName} ({this.state.tickerSymbol})</h2>
-                  <p>Market Day High: ${this.state.regularMarketDayHigh}</p>
-                  <p>Market Day Low: ${this.state.regularMarketDayLow}</p>
+                  <p>Market Day
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" className="bi bi-arrow-up-short" viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                    </svg>: ${this.state.regularMarketDayHigh}
+                  </p>                  
+                  <p>Market Day
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" className="bi bi-arrow-down-short" viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+                    </svg>: ${this.state.regularMarketDayLow}
+                  </p>
                 </div>
               </div>
               <form onSubmit={(evt) => this.handleWatchlistSubmit(evt)} >
