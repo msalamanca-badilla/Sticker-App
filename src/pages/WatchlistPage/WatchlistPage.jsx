@@ -61,18 +61,18 @@ export default class WatchlistPage extends React.Component{
                                                         <path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
                                                         </svg>
                                                     </th>
-                                                    <th>
-                                                        <form id={watchlistItem._id} onSubmit={(evt)=>this.handleRemoveFromWatchlist(evt)}>
-                                                            <button type="submit" className="btn btn-dark">-</button>
-                                                        </form>
-                                                    </th>   
+                                                    <th></th>   
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>                                       
                                                     <td>${watchlistItem.regularMarketDayHigh}</td>
                                                     <td>${watchlistItem.regularMarketDayLow}</td>   
-                                                    <td></td>                                      
+                                                    <td>
+                                                        <form id={watchlistItem._id} onSubmit={(evt)=>this.handleRemoveFromWatchlist(evt)}>
+                                                                <button type="submit" id='removeButton' className="btn btn-dark">- Remove</button>
+                                                        </form>
+                                                    </td>                                      
                                                 </tr>
                                             </tbody>
                                         </table>

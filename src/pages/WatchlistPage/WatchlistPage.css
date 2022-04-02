@@ -10,3 +10,7 @@ h4.tickerWatchlist{
 main{
     height: 100%;
 }
+
+#removeButton{
+    font-size: 12px;
+}
