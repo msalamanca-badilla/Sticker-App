@@ -2,11 +2,11 @@
 Sticker aka 'Stock Ticker' is a mobile application that allows the user to search for stocks and add them to their watchlist
 
 ## User Stories
-AAU I want to Signup and Login
-AAU I want to search for Market Day High and Low by Stock Symbol
-AAU I want to add the stock to my watchlist
-AAU I want to see the stocks I've saved with Market Day High and Low
-AAU I want to remove the item from my watchlist
+AAU I want to Signup and Login\
+AAU I want to search for Market Day High and Low by Stock Symbol\
+AAU I want to add the stock to my watchlist\
+AAU I want to see the stocks I've saved with Market Day High and Low\
+AAU I want to remove the item from my watchlist\
 
 ## Technology
 - MongoDB
