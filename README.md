@@ -8,3 +8,4 @@ Sticker aka 'Stock Ticker' is a mobile application that allows the user to searc
 - Yahoo Finance API
 
 ## Icebox
+- Use a Websocket to grab real time stock prices

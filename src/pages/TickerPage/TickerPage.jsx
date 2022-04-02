@@ -9,7 +9,8 @@ export default class TickerPage extends React.Component {
     displayName:'',
     tickerSymbol:'',
     regularMarketDayHigh:0,
-    regularMarketDayLow:0
+    regularMarketDayLow:0,
+    validStock: false
   }
   
   //API HANDLE CHANGE
@@ -38,7 +39,6 @@ export default class TickerPage extends React.Component {
       tickerSymbol: data.symbol,
       regularMarketDayHigh: data.regularMarketDayHigh,
       regularMarketDayLow: data.regularMarketDayLow
-
     })
   };
 
@@ -54,7 +54,7 @@ export default class TickerPage extends React.Component {
           tickerSymbol: this.state.tickerSymbol,
           displayName: this.state.displayName,
           regularMarketDayHigh: this.state.regularMarketDayHigh,
-          regularMarketDayLow: this.state.regularMarketDayLow
+          regularMarketDayLow: this.state.regularMarketDayLow,
         })
       })
 
@@ -78,7 +78,7 @@ export default class TickerPage extends React.Component {
   render() {
     return (
       <main className="TickerPage">
-          <h3 className = 'titleFont'>Enter Stock Ticker</h3>
+          <h3 className = 'titleFont'>Enter Stock Symbol</h3>
             <form onSubmit={(evt)=>this.handleSubmit(evt)}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1"></label>
@@ -93,9 +93,10 @@ export default class TickerPage extends React.Component {
                     <button type="submit" className="btn btn-dark">Search</button>
             </form>
             <br/>
-            <hr/>
-      {this.state.tickerSymbol? (
+            
+      {this.state.displayName? (
             <>
+            <hr/>
               <div className='stockData'>
                 <div>
                   <h2>{this.state.displayName} ({this.state.tickerSymbol})</h2>
@@ -114,7 +115,7 @@ export default class TickerPage extends React.Component {
               </form>
             </>
       ):(
-        <div></div>
+        <div>Please enter a valid Stock Symbol</div>
       )}
       </main>
     );
