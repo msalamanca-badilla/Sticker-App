@@ -1,6 +1,8 @@
 # Sticker Application
 Sticker aka 'Stock Ticker' is a mobile application that allows the user to search for stocks and add them to their watchlist
 
+Start your adding to your watchlist [here](https://stock-ticker-application.herokuapp.com/)!
+
 ## User Stories
 AAU I want to Signup and Login\
 AAU I want to search for Market Day High and Low by Stock Symbol\
