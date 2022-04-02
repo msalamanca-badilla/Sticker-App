@@ -8,7 +8,7 @@ AAU I want to Signup and Login\
 AAU I want to search for Market Day High and Low by Stock Symbol\
 AAU I want to add the stock to my watchlist\
 AAU I want to see the stocks I've saved with Market Day High and Low\
-AAU I want to remove the item from my watchlist\
+AAU I want to remove the item from my watchlist
 
 ## App Demo
 ![StickerDemo](https://user-images.githubusercontent.com/94421156/161364269-9f0d4d0b-d138-4a00-bd64-cf457e73ee66.gif)
