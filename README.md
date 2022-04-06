@@ -11,18 +11,20 @@ AAU I want to see the stocks I've saved with Market Day High and Low\
 AAU I want to remove the item from my watchlist
 
 ## App Demo
-![StickerDemo]()
+![STICKER](https://user-images.githubusercontent.com/94421156/162035273-0881f2d9-d99a-4aad-8cc0-f8b9422287ab.gif)
 
 ## Technology
 - MongoDB
 - Express
 - React
 - Node.js
+- Bootstrap
 - Yahoo Finance API
 
 ## Services
 - [Figma](https://www.figma.com/file/RcI6ILbuOBN9JuzfiWQJDm/Sticker-App?node-id=0%3A1)
 - [Trello](https://trello.com/b/5i8tREYI/sticker-agile-board)
+- Heroku
 - Whimsical for ERD(Entity Relationship Diagram) Below
 
 ![Screen Shot 2022-04-01 at 9 17 18 PM](https://user-images.githubusercontent.com/94421156/161360211-90cafc64-4e60-4fcd-ac01-9614b7fc2c6e.png)
