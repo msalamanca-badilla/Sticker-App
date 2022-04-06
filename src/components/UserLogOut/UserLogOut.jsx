@@ -11,7 +11,6 @@ class UserLogOut extends React.Component{
         this.props.setUserInState(null)
     };
 
-
     render(){
         return(
             <div className="UserLogOut ">   

@@ -11,12 +11,10 @@ class App extends Component {
     user: null,
   }
 
-  
   setUserInState = (incomingUserData) => {
     this.setState({ user: incomingUserData})
   }
 
-  
   componentDidMount() {
     let token = window.localStorage.getItem('token')
     if (token) {
@@ -25,7 +23,6 @@ class App extends Component {
       this.setState({user: userDoc})      
     }
   }
-
 
   render() {
     return (
@@ -37,7 +34,7 @@ class App extends Component {
                   <Redirect to = '/tickers'/>
                 </Route>
                 <Route path='/tickers' render={(props) => (
-                    <TickerPage {...props} setUserInState={this.setUserInState}/>
+                    <TickerPage {...props}/>
                   )}/>
                 <Route path='/watchlist' render={(props) => (
                     <WatchlistPage {...props} user={this.state.user}/> 
@@ -48,7 +45,6 @@ class App extends Component {
         ) : (
           <AuthPage setUserInState={this.setUserInState} />
         )}
-
       </main>
     );
   }
