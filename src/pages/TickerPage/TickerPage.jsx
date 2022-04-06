@@ -10,10 +10,9 @@ export default class TickerPage extends React.Component {
     tickerSymbol:'',
     regularMarketDayHigh:0,
     regularMarketDayLow:0,
-    validStock: false
   }
   
-  //API HANDLE CHANGE
+  //API CALL HANDLE CHANGE
   handleChange = (evt) => {
     this.setState({
       ticker: evt.target.value,
@@ -21,7 +20,8 @@ export default class TickerPage extends React.Component {
     });
   };
 
-  //API HANDLESUBMIT
+  //API CALL HANDLESUBMIT
+    //Understand that API calls shouldn't be ran on the front-end and API Keys shouldn't be exposed. This was done for React practice and will eventually move this call to the backend
   handleSubmit = async (evt) => {
     evt.preventDefault(); 
       const ticker = this.state.ticker//input for 'Enter Stock Ticker'

@@ -1,5 +1,5 @@
 # Sticker Application
-Sticker aka 'Stock Ticker' is a mobile application that allows the user to search for stocks and add them to their watchlist
+Sticker aka 'Stock Ticker' is a mobile responsive web application that allows the user to search for stocks using the Yahoo Finance API. Users can and add and remove stocks to and from  their watchlist. 
 
 Start your adding to your watchlist [here](https://stock-ticker-application.herokuapp.com/)!
 
@@ -11,7 +11,7 @@ AAU I want to see the stocks I've saved with Market Day High and Low\
 AAU I want to remove the item from my watchlist
 
 ## App Demo
-![StickerDemo](https://user-images.githubusercontent.com/94421156/161364269-9f0d4d0b-d138-4a00-bd64-cf457e73ee66.gif)
+![StickerDemo]()
 
 ## Technology
 - MongoDB
@@ -28,5 +28,7 @@ AAU I want to remove the item from my watchlist
 ![Screen Shot 2022-04-01 at 9 17 18 PM](https://user-images.githubusercontent.com/94421156/161360211-90cafc64-4e60-4fcd-ac01-9614b7fc2c6e.png)
 
 ## Icebox
+- Create a new branch to recreate the app using hooks 
 - Use a Websocket to grab real-time stock prices
+    - Or use a timer to call the API at a given time
 - Plot stock data on a graph
