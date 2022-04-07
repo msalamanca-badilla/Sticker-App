@@ -47,7 +47,7 @@ export default class TickerPage extends React.Component {
     evt.preventDefault();
     try {
       let jwt = localStorage.getItem('token')
-      const fetchResponse = await fetch('/api/tickers/watchlistCreate', {
+      const fetchResponse = await fetch('/api/tickers/addToWatchlist', {
         method: 'POST',
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + jwt},
         body: JSON.stringify({

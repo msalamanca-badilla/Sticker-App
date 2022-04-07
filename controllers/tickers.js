@@ -1,12 +1,12 @@
 const TickerModel = require('../models/ticker.js'); 
 
 module.exports = {
-    index,
+    allWatchlist,
     addToWatchlist,
     removeFromWatchlist,
 }
 
-async function index(req, res) {
+async function allWatchlist(req, res) {
   try {
     // 1. grab all items from DB, sorted by date descending
     let watchlist = await TickerModel.find({user: req.user._id}).sort({createdAt:'desc'}).exec();

@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 const tickerCtrl = require('../../controllers/tickers');
 
-router.get('/watchlist', tickerCtrl.index )
-router.post('/watchlistCreate', tickerCtrl.addToWatchlist)
-router.delete('/watchlist/delete/:id', tickerCtrl.removeFromWatchlist)
+router.get('/watchlist', tickerCtrl.allWatchlist )
+router.post('/addToWatchlist', tickerCtrl.addToWatchlist)
+router.delete('/watchlist/remove/:id', tickerCtrl.removeFromWatchlist)
 
 module.exports = router;

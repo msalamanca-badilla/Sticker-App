@@ -24,7 +24,7 @@ export default class WatchlistPage extends React.Component{
         evt.preventDefault()
         try{
             const id = evt.target.id
-            const removeTicker = await fetch(`/api/tickers/watchlist/delete/${id}`, {
+            const removeTicker = await fetch(`/api/tickers/watchlist/remove/${id}`, {
                 method: "DELETE",
                 headers: {"Content-Type": "application/json"},
             })   
