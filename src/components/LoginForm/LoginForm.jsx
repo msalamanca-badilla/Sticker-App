@@ -1,60 +1,120 @@
-import { Component } from 'react';
+import { Component, useState } from 'react';
 import'./LoginForm.css'
 
-export default class SignUpForm extends Component {
-  state = {
-    email: '',
-    password: '',
-    error: ''
-  };
+export default function SignUpForm (props){
 
-  handleChange = (evt) => {
-    this.setState({
+  const[login, setLogin]=useState
+    ({
+      email: ' ',
+      password: ' ',
+      error: ' '
+    })
+
+  function handleChange(evt){
+    setLogin({
       [evt.target.name]: evt.target.value,
       error: ''
     });
   };
 
-  handleSubmit = async (evt) => {
-    evt.preventDefault();
-    console.log(evt)
-    try {
-      const fetchResponse = await fetch('/api/users/login', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: this.state.email, password: this.state.password, })
-      })
+  // handleSubmit = async (evt) => {
+  //   evt.preventDefault();
+  //   console.log(evt)
+  //   try {
+  //     const fetchResponse = await fetch('/api/users/login', {
+  //       method: 'POST',
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email: login.email, password: login.password, })
+  //     })
 
-      if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
+  //     if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
 
-      let token = await fetchResponse.json() 
-      window.localStorage.setItem('token', token);  
+  //     let token = await fetchResponse.json() 
+  //     window.localStorage.setItem('token', token);  
 
-      const userDoc = JSON.parse(atob(token.split('.')[1])).user; 
-      this.props.setUserInState(userDoc)
+  //     const userDoc = JSON.parse(atob(token.split('.')[1])).user; 
+  //     props.setUserInState(userDoc)
 
-    } catch (err) {
-      console.log("SignupForm error", err)
-      this.setState({ error: 'Sign Up Failed - Try Again' });
-    }
-  }
+  //   } catch (err) {
+  //     console.log("SignupForm error", err)
+  //     this.setState({ error: 'Sign Up Failed - Try Again' });
+  //   }
+  // }
 
-  render() {
+
     return (
     <div className = 'LoginForm'>
       <h1 className = 'titleFont'>Sticker</h1>
         <form autoComplete="off" onSubmit={(e)=>this.handleSubmit(e)}>
           <div className="form-group">
               <label htmlFor="exampleInputEmail1">Email</label>
-              <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required className="form-control" />
+              <input type="text" name="email" value={login.email} onChange={handleChange} required className="form-control" />
           </div>
           <div className="form-group">
               <label htmlFor="exampleInputPassword1">Password</label>
-              <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required className="form-control"/>
+              <input type="password" name="password" value={login.password} onChange={handleChange} required className="form-control"/>
           </div>
           <button type="submit" className="btn btn-dark">LOGIN</button>
         </form>
     </div>
     );
   }
-}
+
+
+// export default class SignUpForm extends Component {
+//   state = {
+//     email: '',
+//     password: '',
+//     error: ''
+//   };
+
+//   handleChange = (evt) => {
+//     this.setState({
+//       [evt.target.name]: evt.target.value,
+//       error: ''
+//     });
+//   };
+
+//   handleSubmit = async (evt) => {
+//     evt.preventDefault();
+//     console.log(evt)
+//     try {
+//       const fetchResponse = await fetch('/api/users/login', {
+//         method: 'POST',
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ email: this.state.email, password: this.state.password, })
+//       })
+
+//       if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
+
+//       let token = await fetchResponse.json() 
+//       window.localStorage.setItem('token', token);  
+
+//       const userDoc = JSON.parse(atob(token.split('.')[1])).user; 
+//       this.props.setUserInState(userDoc)
+
+//     } catch (err) {
+//       console.log("SignupForm error", err)
+//       this.setState({ error: 'Sign Up Failed - Try Again' });
+//     }
+//   }
+
+//   render() {
+//     return (
+//     <div className = 'LoginForm'>
+//       <h1 className = 'titleFont'>Sticker</h1>
+//         <form autoComplete="off" onSubmit={(e)=>this.handleSubmit(e)}>
+//           <div className="form-group">
+//               <label htmlFor="exampleInputEmail1">Email</label>
+//               <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required className="form-control" />
+//           </div>
+//           <div className="form-group">
+//               <label htmlFor="exampleInputPassword1">Password</label>
+//               <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required className="form-control"/>
+//           </div>
+//           <button type="submit" className="btn btn-dark">LOGIN</button>
+//         </form>
+//     </div>
+//     );
+//   }
+// }
